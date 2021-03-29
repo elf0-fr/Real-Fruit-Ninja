@@ -117,3 +117,58 @@ Received Import Request.
 Start importing Assets/Scripts/SerialHandler.cs using Guid(4faba3cc757ae45d99702caf68b1eedf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bfa18affc20082f506ad44d3c76273e') in 0.003165 seconds
   Import took 0.005178 seconds .
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000314 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.19 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.877 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.19 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1109 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.2 MB.
+System memory in use after: 113.3 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1562.
+Total: 1.396939 ms (FindLiveObjects: 0.124797 ms CreateObjectMapping: 0.031588 ms MarkObjects: 1.201995 ms  DeleteObjects: 0.037706 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1321.183809 seconds.
+  path: Assets/Ressources/fruits
+  artifactKey: Guid(67e85b843bbee4ae0ab6f60b733b6725) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Ressources/fruits using Guid(67e85b843bbee4ae0ab6f60b733b6725) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a7cfe8e3daab8e9bc3a3bf1b35330dd') in 0.003530 seconds
+  Import took 0.005574 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000281 seconds.
+  path: Assets/Ressources/fruits
+  artifactKey: Guid(67e85b843bbee4ae0ab6f60b733b6725) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Ressources/fruits using Guid(67e85b843bbee4ae0ab6f60b733b6725) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a7cfe8e3daab8e9bc3a3bf1b35330dd') in 0.000702 seconds
+  Import took 0.001958 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.392774 seconds.
+  path: Assets/Ressources/fruits/psd
+  artifactKey: Guid(3a23ee9edd023404a849e0830d3953a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Ressources/fruits/psd using Guid(3a23ee9edd023404a849e0830d3953a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f569bb2e40e718c183e7498dbf31fbc') in 0.002154 seconds
+  Import took 0.003972 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000596 seconds.
+  path: Assets/Ressources/fruits/psd
+  artifactKey: Guid(3a23ee9edd023404a849e0830d3953a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Ressources/fruits/psd using Guid(3a23ee9edd023404a849e0830d3953a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f569bb2e40e718c183e7498dbf31fbc') in 0.000716 seconds
+  Import took 0.002167 seconds .
+
