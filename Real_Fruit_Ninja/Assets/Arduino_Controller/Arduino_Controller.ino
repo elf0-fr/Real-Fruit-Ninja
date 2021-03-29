@@ -10,7 +10,8 @@ long total  = 0;
 const int sensitivity  = 1000;
 const int thresh  = 200;
 const int csStep  = 10000;
-CapacitiveSensor cs  = CapacitiveSensor(2, 3);
+CapacitiveSensor cs1  = CapacitiveSensor(2, 3);
+CapacitiveSensor cs2  = CapacitiveSensor(4, 5);
 
 
 
@@ -31,23 +32,34 @@ void setup() {
   //Init cs
   if (autocal == 0) {
     {
-      cs.set_CS_AutocaL_Millis(0xFFFFFFFF);
+      cs1.set_CS_AutocaL_Millis(0xFFFFFFFF);
+      cs2.set_CS_AutocaL_Millis(0xFFFFFFFF);
     }
   }
 }
 
 void loop() {
-  int value = smooth();
-  if (value > 1000 && button_flag == false){
-    button_flag = true;
-    Serial.println("Oignon");
-  }
-  if (value < 1000 && button_flag == true) {
-    button_flag = false;
-  }
+  int value1 = smooth(cs1);
+  int value2 = smooth(cs2);
+  tester(value1, "oignon");
+  tester(value2, "oignon2");
 }
 
-long smooth() { /* function smooth */
+void tester(int val, const char * mes){
+  
+  if (val > 1000 && button_flag == false){
+    button_flag = true;
+    Serial.println(mes);
+  }
+  if (val < 1000 && button_flag == true) {
+    button_flag = false;
+  }
+  
+  
+}
+
+
+long smooth(CapacitiveSensor cs) { /* function smooth */
   ////Perform average on sensor readings
   long average;
   // subtract the last reading:
