@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CuttingAnimation : MonoBehaviour
 {
-    [SerializeField] private float speed = 10.0f;
+    [SerializeField] private float speed = 7.0f;
     private Vector3 tagetPos;
     [SerializeField] private TrailRenderer trail;
     [SerializeField] private TrailRenderer childTrail;
