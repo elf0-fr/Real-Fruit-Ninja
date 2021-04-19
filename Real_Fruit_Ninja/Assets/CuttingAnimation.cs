@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class CuttingAnimation : MonoBehaviour
 {
-    [SerializeField] private float speed = 7.0f;
+    [SerializeField] private float speed = 2.0f;
     private Vector3 tagetPos;
     [SerializeField] private TrailRenderer trail;
     [SerializeField] private TrailRenderer childTrail;
+    private float timer = 0.0f;
 
+    [SerializeField] private GameObject fruit;
+    [SerializeField] private GameObject fruitcut1;
+    [SerializeField] private GameObject fruitcut2;
     public void Start() 
     {   
+        timer=0.0f;
         trail.enabled = false;
         childTrail.enabled = false;
-        Random.InitState(System.DateTime.Now.Millisecond);
-        Vector3 randomDirection = new Vector3(0.0f, 0.0f, Random.value);
-        transform.Rotate(randomDirection);
-        transform.Translate(transform.right * 2);
-
-        tagetPos = transform.position + transform.right * 4;
+        transform.localPosition  = new Vector3(-0.25f,-0.25f,0.0f);
+        tagetPos = transform.localPosition + new Vector3(+0.5f,+0.5f,0.0f);
         trail.enabled = true;
         childTrail.enabled = true;
     }
@@ -26,8 +27,16 @@ public class CuttingAnimation : MonoBehaviour
 
     public void Update()
     {
-        float step =  speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position,tagetPos , step);
-
+        timer+=Time.deltaTime;
+        if(timer>0.5f){
+            float step =  speed * Time.deltaTime;
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition,tagetPos , step);
+        }
+        if(transform.localPosition == tagetPos)
+        {
+            fruit.SetActive(false);
+            fruitcut1.SetActive(true);
+            fruitcut2.SetActive(true);
+        }
     }
 }
