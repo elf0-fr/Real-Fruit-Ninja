@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8054970212559989966
 Transform:
   m_ObjectHideFlags: 0
@@ -47,12 +47,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultTime: 1
-  JumpForce: {x: 0, y: 9}
-  upForce: 9
+  JumpForce: {x: 0, y: 8}
   fallForce: {x: 0, y: -6}
   isCut: 0
+  IsWaiting: 1
   fruitCut_event: {fileID: 11400000, guid: 345f6dc0c25fe4a619fff3facd972a06, type: 2}
   fruitMissed_event: {fileID: 11400000, guid: e185d5cc31e414b14b761e7d52399a04, type: 2}
+  fruitDespawn_event: {fileID: 11400000, guid: e33417f3a3a3846638e75bb443abff5e, type: 2}
   fruit: {fileID: 8054970213292894606}
   fruitA: {fileID: 8054970213189318118}
   fruitB: {fileID: 8054970213061680046}

@@ -19,12 +19,18 @@ public class FruitController : MonoBehaviour
 
     private bool isFruitVisible = false;
 
+    public bool IsWaiting = true;
+
+
     [Header("GameEvent")]
     [SerializeField]
     private GameEvent fruitCut_event;
 
     [SerializeField]
     private GameEvent fruitMissed_event;
+
+    [SerializeField]
+    private GameObject_gameEvent fruitDespawn_event;
 
 
     [Header("GameObject")]
@@ -64,20 +70,22 @@ public class FruitController : MonoBehaviour
 
     private void OnEnable()
     {
-        //TODO choisir un fruit de façon random et l'assigner aux sprit renderer
-        //TODO choisir un angle de tir correcte de façon random ?
-
         time = defaultTime;
+        IsWaiting = true;
     }
 
     void FixedUpdate()
     {
+        if (IsWaiting)
+        {
+            return;
+        }
 
         if (time > 0f)
         {
-            rb2D_fruit.AddForce(new Vector2(5f, 10f));
-            rb2D_fruitA.AddForce(new Vector2(5f, 10f));
-            rb2D_fruitB.AddForce(new Vector2(5f, 10f));
+            rb2D_fruit.AddForce(JumpForce);
+            rb2D_fruitA.AddForce(JumpForce);
+            rb2D_fruitB.AddForce(JumpForce);
             time -= Time.deltaTime;
         }
         else
@@ -103,7 +111,14 @@ public class FruitController : MonoBehaviour
 
     public void Cut()
     {
+        if (IsWaiting || isCut)
+        {
+            return;
+        }
+
         sR_fruit.enabled = false;
+
+        isCut = true;
 
         fruitCut_event.Raise();
     }
@@ -123,6 +138,9 @@ public class FruitController : MonoBehaviour
 
             sR_fruit.enabled = true;
             isFruitVisible = false;
+            isCut = false;
+
+            fruitDespawn_event.Raise(this.gameObject);
 
             gameObject.SetActive(false);
         }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2932071398302606608}
   - component: {fileID: 2932071398302606607}
   - component: {fileID: 2932071398302606606}
+  - component: {fileID: -3606387156074144696}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,8 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f556da8feb644b0c9de78718f762768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fruitPrefab: {fileID: 8054970212559989969, guid: 63be997240f2741dfafe0df44d331358, type: 3}
   maxDistance: 5
-  maxAngle: 0
+  maxAngle: 4
+  spawnRate: 10
+  spawnRateDropSpeed: 0.001
+  spawnRateDeceleration: 0.001
+  minSpawnRate: 1
 --- !u!114 &2932071398302606607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +101,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: DecreaseLife
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-3606387156074144696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932071398302606605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44b8f55f121db4126860a69c697d850e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: e33417f3a3a3846638e75bb443abff5e, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2932071398302606608}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Despawn
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
