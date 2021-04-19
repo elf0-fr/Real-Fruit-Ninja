@@ -9,6 +9,8 @@ public class FruitController : MonoBehaviour
 
     private float time;
 
+    public Vector2 JumpForce;
+
     [SerializeField]
     private Vector2 fallForce;
 
@@ -16,6 +18,13 @@ public class FruitController : MonoBehaviour
     private bool isCut = false;
 
     private bool isFruitVisible = false;
+
+    [Header("GameEvent")]
+    [SerializeField]
+    private GameEvent fruitCut_event;
+
+    [SerializeField]
+    private GameEvent fruitMissed_event;
 
 
     [Header("GameObject")]
@@ -53,12 +62,6 @@ public class FruitController : MonoBehaviour
         
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     private void OnEnable()
     {
         //TODO choisir un fruit de façon random et l'assigner aux sprit renderer
@@ -79,8 +82,6 @@ public class FruitController : MonoBehaviour
         }
         else
         {
-            Cut();
-
             rb2D_fruit.AddForce(fallForce);
             rb2D_fruitA.AddForce(fallForce);
             rb2D_fruitB.AddForce(fallForce);
@@ -93,13 +94,18 @@ public class FruitController : MonoBehaviour
         }
 
         IsFruitVisible();
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Cut();
+        }
     }
 
     public void Cut()
     {
         sR_fruit.enabled = false;
 
-        //TODO rajouter un point
+        fruitCut_event.Raise();
     }
 
     private void IsFruitVisible()
@@ -108,7 +114,7 @@ public class FruitController : MonoBehaviour
         {
             if (!isCut)
             {
-                //TODO rajouter une pénalité
+                fruitMissed_event.Raise();
             }
 
             fruit.transform.position = gameObject.transform.position;
