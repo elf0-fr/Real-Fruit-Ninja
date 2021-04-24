@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private int score = 0;
-
     private int life = 5;
 
     [SerializeField]
@@ -27,8 +26,8 @@ public class GameManager : MonoBehaviour
     private float lastSpawnTime;
     private float accumulatedTime;
 
-    private List<GameObject> waitingFruits = new List<GameObject>();
-    private List<GameObject> inGameFruits = new List<GameObject>();
+    private readonly List<GameObject> waitingFruits = new List<GameObject>();
+    private readonly List<GameObject> inGameFruits = new List<GameObject>();
 
     private void Awake()
     {
@@ -36,7 +35,6 @@ public class GameManager : MonoBehaviour
         accumulatedTime = 0f;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < 10; ++i)
@@ -48,7 +46,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("Life = " + life);
     }
 
-    // Update is called once per frame
     void Update()
     {
         accumulatedTime += Time.deltaTime;
@@ -66,11 +63,7 @@ public class GameManager : MonoBehaviour
     private void InitializeFruit()
     {
         Vector2 spawn = new Vector2(Random.Range(-maxDistance, maxDistance), -5f);
-
         GameObject fruit = Instantiate(fruitPrefab, spawn, Quaternion.identity);
-
-        fruit.GetComponent<FruitController>().JumpForce.x = Random.Range(-maxAngle, maxAngle);
-
         waitingFruits.Add(fruit);
     }
 
@@ -84,6 +77,8 @@ public class GameManager : MonoBehaviour
         GameObject fruit = waitingFruits[0];
         waitingFruits.Remove(fruit);
         inGameFruits.Add(fruit);
+
+        fruit.GetComponent<FruitController>().JumpForce.x = Random.Range(-maxAngle, maxAngle);
 
         //TODO Ajouter les sprites
 

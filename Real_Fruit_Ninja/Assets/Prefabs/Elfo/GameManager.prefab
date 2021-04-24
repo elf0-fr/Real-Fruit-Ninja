@@ -49,7 +49,7 @@ MonoBehaviour:
   fruitPrefab: {fileID: 8054970212559989969, guid: 63be997240f2741dfafe0df44d331358, type: 3}
   maxDistance: 5
   maxAngle: 4
-  spawnRate: 10
+  spawnRate: 5
   spawnRateDropSpeed: 0.001
   spawnRateDeceleration: 0.001
   minSpawnRate: 1

@@ -4,31 +4,26 @@ using UnityEngine;
 
 public class FruitController : MonoBehaviour
 {
+    //TODO ajout du type de fuit.
+
     [SerializeField]
     private float defaultTime;
-
     private float time;
-
     public Vector2 JumpForce;
-
     [SerializeField]
     private Vector2 fallForce;
 
     [SerializeField]
     private bool isCut = false;
-
     private bool isFruitVisible = false;
-
     public bool IsWaiting = true;
 
 
     [Header("GameEvent")]
     [SerializeField]
     private GameEvent fruitCut_event;
-
     [SerializeField]
     private GameEvent fruitMissed_event;
-
     [SerializeField]
     private GameObject_gameEvent fruitDespawn_event;
 
@@ -36,42 +31,39 @@ public class FruitController : MonoBehaviour
     [Header("GameObject")]
     [SerializeField]
     private GameObject fruit;
-
     [SerializeField]
     private GameObject fruitA;
-
     [SerializeField]
     private GameObject fruitB;
 
     [Header("Sprite Renderer")]
     [SerializeField]
     private SpriteRenderer sR_fruit;
-
     [SerializeField]
     private SpriteRenderer sR_fruitA;
-
     [SerializeField]
     private SpriteRenderer sR_fruitB;
 
     [Header("Rigidbody")]
     [SerializeField]
     private Rigidbody2D rb2D_fruit;
-
     [SerializeField]
     private Rigidbody2D rb2D_fruitA;
-
     [SerializeField]
     private Rigidbody2D rb2D_fruitB;
-
-    private void Awake()
-    {
-        
-    }
 
     private void OnEnable()
     {
         time = defaultTime;
         IsWaiting = true;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C) && isFruitVisible)
+        {
+            Cut();
+        }
     }
 
     void FixedUpdate()
@@ -101,36 +93,26 @@ public class FruitController : MonoBehaviour
             rb2D_fruitB.AddForce(new Vector2(-1f, 0f));
         }
 
-        IsFruitVisible();
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Cut();
-        }
+        CheckFruitVisible();
     }
 
     public void Cut()
     {
         if (IsWaiting || isCut)
-        {
             return;
-        }
 
         sR_fruit.enabled = false;
-
         isCut = true;
 
         fruitCut_event.Raise();
     }
 
-    private void IsFruitVisible()
+    private void CheckFruitVisible()
     {
         if (!sR_fruit.isVisible && !sR_fruitA.isVisible && !sR_fruitB.isVisible && isFruitVisible)
         {
             if (!isCut)
-            {
                 fruitMissed_event.Raise();
-            }
 
             fruit.transform.position = gameObject.transform.position;
             fruitA.transform.position = gameObject.transform.position;

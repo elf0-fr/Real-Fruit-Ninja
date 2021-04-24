@@ -310,10 +310,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2932071398302606608, guid: 1660ddc1d9d0645dbaa7081ef13723da, type: 3}
-      propertyPath: fruitPrefab
-      value: 
-      objectReference: {fileID: 8054970212559989969, guid: 63be997240f2741dfafe0df44d331358, type: 3}
     - target: {fileID: 2932071398302606609, guid: 1660ddc1d9d0645dbaa7081ef13723da, type: 3}
       propertyPath: m_RootOrder
       value: 2
