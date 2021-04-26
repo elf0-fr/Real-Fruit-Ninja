@@ -2,10 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GameState
+{
+    Start,
+    Play,
+    Pause,
+    End
+}
+
 public class GameManager : MonoBehaviour
 {
-    private int score = 0;
-    private int life = 5;
+    [SerializeField]
+    private GameStates_so gameStates_So;
 
     [SerializeField]
     private GameObject fruitPrefab;
@@ -42,11 +50,35 @@ public class GameManager : MonoBehaviour
             InitializeFruit();
         }
 
-        Debug.Log("Score = " + score);
-        Debug.Log("Life = " + life);
+        Debug.Log("Score = " + gameStates_So.Score);
+        Debug.Log("Life = " + gameStates_So.Life);
     }
 
     void Update()
+    {
+        switch (gameStates_So.GameState)
+        {
+            case GameState.Start:
+                break;
+            case GameState.Pause:
+                break;
+            case GameState.End:
+                Debug.Log("End");
+                break;
+            default:
+                CheckTimeToSpawn();
+                break;
+        }
+    }
+
+    private void InitializeFruit()
+    {
+        Vector2 spawn = new Vector2(Random.Range(-maxDistance, maxDistance), -5f);
+        GameObject fruit = Instantiate(fruitPrefab, spawn, Quaternion.identity);
+        waitingFruits.Add(fruit);
+    }
+
+    private void CheckTimeToSpawn()
     {
         accumulatedTime += Time.deltaTime;
 
@@ -58,13 +90,6 @@ public class GameManager : MonoBehaviour
             lastSpawnTime = accumulatedTime;
             Spawn();
         }
-    }
-
-    private void InitializeFruit()
-    {
-        Vector2 spawn = new Vector2(Random.Range(-maxDistance, maxDistance), -5f);
-        GameObject fruit = Instantiate(fruitPrefab, spawn, Quaternion.identity);
-        waitingFruits.Add(fruit);
     }
 
     private void Spawn()
@@ -90,26 +115,5 @@ public class GameManager : MonoBehaviour
     {
         inGameFruits.Remove(gameObject);
         waitingFruits.Add(gameObject);
-    }
-
-    // Fruit cut
-    public void IncreaseScore()
-    {
-        score += 10;
-        Debug.Log("Score = " + score);
-    }
-
-    // Wrong fruit cut
-    public void DecreaseScore()
-    {
-        score -= 3;
-        Debug.Log("Score = " + score);
-    }
-
-    // Fruit miss
-    public void DecreaseLife()
-    {
-        life -= 1;
-        Debug.Log("Life = " + life);
     }
 }
