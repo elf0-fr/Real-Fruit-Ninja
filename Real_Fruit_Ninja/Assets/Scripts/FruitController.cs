@@ -2,7 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//TODO ajout du type de fuit.
+public enum FruitType
+{
+    BANANA,
+    APPLE,
+    CARROT,
+    PEAR,
+    TOMATO,
+
+    FRUITS = 5
+}
+
 public class FruitController : MonoBehaviour
 {
     [SerializeField]
@@ -39,11 +49,11 @@ public class FruitController : MonoBehaviour
 
     [Header("Sprite Renderer")]
     [SerializeField]
-    private SpriteRenderer sR_fruit;
+    public SpriteRenderer sR_fruit;
     [SerializeField]
-    private SpriteRenderer sR_fruitA;
+    public SpriteRenderer sR_fruitA;
     [SerializeField]
-    private SpriteRenderer sR_fruitB;
+    public SpriteRenderer sR_fruitB;
 
     [Header("Rigidbody")]
     [SerializeField]
@@ -52,6 +62,8 @@ public class FruitController : MonoBehaviour
     private Rigidbody2D rb2D_fruitA;
     [SerializeField]
     private Rigidbody2D rb2D_fruitB;
+
+    public FruitType fruitType;
 
     private void OnEnable()
     {

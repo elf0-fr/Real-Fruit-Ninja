@@ -5281,7 +5281,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: fec373a49e7b84a9c97aa9b8ac849b76, type: 3}
-  m_Color: {r: 0.1649735, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5385,7 +5385,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fec373a49e7b84a9c97aa9b8ac849b76, type: 3}
-  m_Color: {r: 0, g: 0.14507627, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5489,7 +5489,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fec373a49e7b84a9c97aa9b8ac849b76, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5546,7 +5546,7 @@ Transform:
   m_GameObject: {fileID: 8460192494492440046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.96, y: -4.73, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 8460192492685660338}
   - {fileID: 8460192492784454874}
@@ -5584,3 +5584,4 @@ MonoBehaviour:
   rb2D_fruit: {fileID: 8460192492685660339}
   rb2D_fruitA: {fileID: 8460192492784454876}
   rb2D_fruitB: {fileID: 8460192492916875924}
+  fruitType: 0
