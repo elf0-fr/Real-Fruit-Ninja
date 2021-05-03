@@ -7,6 +7,7 @@ public enum GameState
     Start,
     Play,
     Pause,
+    Credits,
     End
 }
 
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
             case GameState.Start:
                 break;
             case GameState.Pause:
+            case GameState.Credits:
                 break;
             case GameState.End:
                 Debug.Log("End");

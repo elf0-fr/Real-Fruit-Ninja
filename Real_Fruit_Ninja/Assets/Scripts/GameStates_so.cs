@@ -11,7 +11,7 @@ public class GameStates_so : ScriptableObject, ISerializationCallbackReceiver
     public GameState GameState
     {
         get => runtimeGameState;
-        private set
+        set
         {
             runtimeGameState = value;
             //TODO raise gameStateChangedEvent

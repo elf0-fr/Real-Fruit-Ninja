@@ -373,7 +373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &500760836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,6 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11231eccd38b84a4bbd3f545f844026d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStates_so: {fileID: 11400000, guid: d3d89c59ac988444580b37ac3d2c9220, type: 2}
   startAndPauseImage: {fileID: 490527737}
   creditsImage: {fileID: 1318741616}
 --- !u!1 &1086684597

@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
+    private GameStates_so gameStates_so;
+
+    [SerializeField]
     private GameObject startAndPauseImage;
     [SerializeField]
     private GameObject creditsImage;
@@ -38,17 +41,20 @@ public class UIManager : MonoBehaviour
 
     public void TransitionToGame()
     {
+        gameStates_so.GameState = GameState.Play;
         startAndPauseImage.SetActive(false);
     }
 
     public void TransitionToMenu()
     {
+        gameStates_so.GameState = GameState.Pause;
         startAndPauseImage.SetActive(true);
         creditsImage.SetActive(false);
     }
 
     public void TransitionToCredits()
     {
+        gameStates_so.GameState = GameState.Credits;
         creditsImage.SetActive(true);
         startAndPauseImage.SetActive(false);
     }
