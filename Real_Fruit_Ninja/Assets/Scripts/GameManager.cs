@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
         Vector2 spawn = new Vector2(Random.Range(-maxDistance, maxDistance), -5f);
         GameObject fruit = Instantiate(fruitPrefab, spawn, Quaternion.identity);
         waitingFruits.Add(fruit);
+        fruit.SetActive(false);
     }
 
     private void CheckTimeToSpawn()
