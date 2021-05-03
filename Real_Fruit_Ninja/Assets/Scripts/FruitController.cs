@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO ajout du type de fuit.
 public class FruitController : MonoBehaviour
 {
-    //TODO ajout du type de fuit.
-
     [SerializeField]
     private float defaultTime;
     private float time;

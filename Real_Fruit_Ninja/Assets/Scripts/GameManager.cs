@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
 
         fruit.GetComponent<FruitController>().JumpForce.x = Random.Range(-maxAngle, maxAngle);
 
-        //TODO Ajouter les sprites
+        //TODO Ajouter les sprites et définir le type de fruit enumeration FruitType
 
         fruit.SetActive(true);
         fruit.GetComponent<FruitController>().IsWaiting = false;
