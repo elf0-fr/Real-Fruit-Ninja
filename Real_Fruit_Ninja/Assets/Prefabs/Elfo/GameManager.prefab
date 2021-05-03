@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f556da8feb644b0c9de78718f762768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStates_So: {fileID: 11400000, guid: d3d89c59ac988444580b37ac3d2c9220, type: 2}
   fruitPrefab: {fileID: 8054970212559989969, guid: 63be997240f2741dfafe0df44d331358, type: 3}
   maxDistance: 5
   maxAngle: 4
