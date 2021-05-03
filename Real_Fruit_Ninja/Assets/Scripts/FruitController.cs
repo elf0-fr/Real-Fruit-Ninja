@@ -133,10 +133,20 @@ public class FruitController : MonoBehaviour
                 fruitMissed_event.Raise();
 
             fruit.transform.position = gameObject.transform.position;
-            fruitA.transform.position = gameObject.transform.position;
-            fruitB.transform.position = gameObject.transform.position;
+
+            //Portion modifiée
+            fruitA.transform.localPosition = new Vector3(0.61f, 0.0f, 0.0f);
+            fruitB.transform.localPosition = new Vector3(-0.61f, 0.0f, 0.0f);
+
 
             sR_fruit.enabled = true;
+
+            //Portion rajoutée
+            fruitA.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 7.16f));
+            fruitB.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, -7.16f));
+            sR_fruitA.enabled = false;
+            sR_fruitB.enabled = false;
+
             isFruitVisible = false;
             isCut = false;
 
