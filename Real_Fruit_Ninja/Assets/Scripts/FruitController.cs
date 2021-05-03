@@ -117,6 +117,8 @@ public class FruitController : MonoBehaviour
             return;
 
         sR_fruit.enabled = false;
+        sR_fruitA.enabled = true;
+        sR_fruitB.enabled = true;
         isCut = true;
         IsWaiting = true;
 

@@ -24,8 +24,8 @@ public class Cut : MonoBehaviour
     void Awake()
     {
         part_sys = GetComponent<ParticleSystem>();
-        initialPos = new Vector3(-0.8f,-0.8f,0.0f);
-        tagetPos = initialPos + new Vector3(+2.2f,+2.2f,0.0f);
+        initialPos = new Vector3(-0.3f,-0.3f,0.0f);
+        tagetPos = initialPos + new Vector3(+2.7f,+2.7f,0.0f);
     }
 
     void Start() 
