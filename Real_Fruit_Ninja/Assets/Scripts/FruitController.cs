@@ -15,6 +15,8 @@ public class FruitController : MonoBehaviour
 
     [SerializeField]
     private bool isCut = false;
+    public bool IsCut => isCut;
+    [SerializeField]
     private bool isFruitVisible = false;
     public bool IsWaiting = true;
 
@@ -60,8 +62,10 @@ public class FruitController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(isFruitVisible);
         if (Input.GetKeyDown(KeyCode.C) && isFruitVisible)
         {
+            IsWaiting = false;
             Cut();
         }
     }
@@ -103,6 +107,7 @@ public class FruitController : MonoBehaviour
 
         sR_fruit.enabled = false;
         isCut = true;
+        IsWaiting = true;
 
         fruitCut_event.Raise();
     }

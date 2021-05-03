@@ -158,6 +158,10 @@ PrefabInstance:
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameStates_so, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 2932071398302606608, guid: 1660ddc1d9d0645dbaa7081ef13723da, type: 3}
+      propertyPath: fruitPrefab
+      value: 
+      objectReference: {fileID: 8460192494492440046, guid: 0b0113163eee6d74389c0be82f6890ba, type: 3}
     - target: {fileID: 2932071398302606609, guid: 1660ddc1d9d0645dbaa7081ef13723da, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -373,7 +377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &500760836
 MonoBehaviour:
   m_ObjectHideFlags: 0
