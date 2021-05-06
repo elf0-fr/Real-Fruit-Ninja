@@ -14,7 +14,6 @@ public class Cut : MonoBehaviour
 
     public void initialization()
     {
-        Debug.Log("enable trail");
         trail.enabled = false;
         childTrail.enabled = false;
         transform.localPosition  = initialPos;
