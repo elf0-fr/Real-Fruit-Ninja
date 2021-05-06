@@ -65,10 +65,13 @@ public class FruitController : MonoBehaviour
 
     public FruitType fruitType;
 
+    private float rotation_ratio;
+
     private void OnEnable()
     {
         time = defaultTime;
         IsWaiting = true;
+        rotation_ratio = Random.Range(-1.0f, 1.0f);
     }
 
     void Update()
@@ -108,6 +111,13 @@ public class FruitController : MonoBehaviour
             rb2D_fruitB.AddForce(new Vector2(-1f, 0f));
         }
 
+        else
+        {
+            fruit.transform.Rotate(0.0f, 0.0f, fruit.transform.rotation.z - rotation_ratio * 90.0f * Time.deltaTime, Space.World);
+            fruitA.transform.Rotate(0.0f, 0.0f, fruit.transform.rotation.z - rotation_ratio * 90.0f * Time.deltaTime, Space.World);
+            fruitB.transform.Rotate(0.0f, 0.0f, fruit.transform.rotation.z - rotation_ratio * 90.0f * Time.deltaTime, Space.World);
+        }
+
         CheckFruitVisible();
     }
 
@@ -119,6 +129,10 @@ public class FruitController : MonoBehaviour
         sR_fruit.enabled = false;
         sR_fruitA.enabled = true;
         sR_fruitB.enabled = true;
+        rb2D_fruit.angularVelocity = 0.0f;
+        float r = Random.Range(-1.0f, 1.0f);
+        rb2D_fruitB.AddTorque(r * 5.0f, ForceMode2D.Impulse);
+        rb2D_fruitA.AddTorque(-5.0f * r , ForceMode2D.Impulse);
         isCut = true;
         IsWaiting = true;
 

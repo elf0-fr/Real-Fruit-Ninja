@@ -40,14 +40,12 @@ public class Cut : MonoBehaviour
             part_sys.Play();
         }
         if(fruit.IsCut && transform.localPosition != tagetPos){
-            Debug.Log("cut");
             trail.enabled = true;
             childTrail.enabled = true;
             float step =  speed * Time.deltaTime;
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, tagetPos, step);
         }
         if(transform.localPosition == tagetPos){
-            Debug.Log("arrivé");
             fruit.IsWaiting = false;
             trail.enabled = false;
             childTrail.enabled = false;
