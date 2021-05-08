@@ -32,6 +32,19 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float minSpawnRate = 1f;
 
+    [Header("Sprites")]
+    [SerializeField]
+    private Sprite[] appleList;
+    [SerializeField]
+    private Sprite[] bananaList;
+    [SerializeField]
+    private Sprite[] carrotList;
+    [SerializeField]
+    private Sprite[] pearList;
+    [SerializeField]
+    private Sprite[] tomatoList;
+    private Sprite[][] fruitSpritesArray = new Sprite[5][];
+
     private float lastSpawnTime;
     private float accumulatedTime;
 
@@ -46,6 +59,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        fruitSpritesArray[(int)FruitType.BANANA] = (bananaList);
+        fruitSpritesArray[(int)FruitType.APPLE] = (appleList);
+        fruitSpritesArray[(int)FruitType.CARROT] = (carrotList);
+        fruitSpritesArray[(int)FruitType.PEAR] = (pearList);
+        fruitSpritesArray[(int)FruitType.TOMATO] = (tomatoList);
+
         for (int i = 0; i < 10; ++i)
         {
             InitializeFruit();
@@ -108,7 +127,13 @@ public class GameManager : MonoBehaviour
 
         fruit.GetComponent<FruitController>().JumpForce.x = Random.Range(-maxAngle, maxAngle);
 
-        //TODO Ajouter les sprites
+        FruitType randomFruitType = (FruitType)Random.Range(0, ((int) FruitType.FRUITS)-1);
+        Sprite[] randomFruitSprites = fruitSpritesArray[(int)randomFruitType];
+
+        fruit.GetComponent<FruitController>().sR_fruit.sprite = randomFruitSprites[0];
+        fruit.GetComponent<FruitController>().sR_fruitA.sprite = randomFruitSprites[2];
+        fruit.GetComponent<FruitController>().sR_fruitB.sprite = randomFruitSprites[1];
+        fruit.GetComponent<FruitController>().fruitType = randomFruitType;
 
         fruit.SetActive(true);
         fruit.GetComponent<FruitController>().IsWaiting = false;
@@ -118,5 +143,18 @@ public class GameManager : MonoBehaviour
     {
         inGameFruits.Remove(gameObject);
         waitingFruits.Add(gameObject);
+    }
+
+    public void CutFruit(FruitType fruitType)
+    {
+        for(int i=0;i<inGameFruits.Count;i++)
+        {
+            if(inGameFruits[i].GetComponent<FruitController>().fruitType == fruitType && !inGameFruits[i].GetComponent<FruitController>().IsCut)
+            {
+                inGameFruits[i].GetComponent<FruitController>().Cut();
+                return;
+            }
+        }
+        Debug.Log("-1 vie");
     }
 }

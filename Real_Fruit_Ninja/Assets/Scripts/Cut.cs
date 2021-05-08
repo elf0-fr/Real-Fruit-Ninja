@@ -14,7 +14,6 @@ public class Cut : MonoBehaviour
 
     public void initialization()
     {
-        Debug.Log("enable trail");
         trail.enabled = false;
         childTrail.enabled = false;
         transform.localPosition  = initialPos;
@@ -24,8 +23,8 @@ public class Cut : MonoBehaviour
     void Awake()
     {
         part_sys = GetComponent<ParticleSystem>();
-        initialPos = new Vector3(-0.8f,-0.8f,0.0f);
-        tagetPos = initialPos + new Vector3(+2.2f,+2.2f,0.0f);
+        initialPos = new Vector3(-0.3f,-0.3f,0.0f);
+        tagetPos = initialPos + new Vector3(+2.7f,+2.7f,0.0f);
     }
 
     void Start() 
@@ -40,14 +39,12 @@ public class Cut : MonoBehaviour
             part_sys.Play();
         }
         if(fruit.IsCut && transform.localPosition != tagetPos){
-            Debug.Log("cut");
             trail.enabled = true;
             childTrail.enabled = true;
             float step =  speed * Time.deltaTime;
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, tagetPos, step);
         }
         if(transform.localPosition == tagetPos){
-            Debug.Log("arrivé");
             fruit.IsWaiting = false;
             trail.enabled = false;
             childTrail.enabled = false;
