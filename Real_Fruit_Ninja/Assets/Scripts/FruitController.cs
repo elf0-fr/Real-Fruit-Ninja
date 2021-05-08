@@ -2,10 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FruitType
+{
+    BANANA,
+    APPLE,
+    CARROT,
+    PEAR,
+    TOMATO,
+
+    FRUITS = 5
+}
+
 public class FruitController : MonoBehaviour
 {
-    //TODO ajout du type de fuit.
-
     [SerializeField]
     private float defaultTime;
     private float time;

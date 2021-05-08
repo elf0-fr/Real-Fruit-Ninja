@@ -17,7 +17,7 @@ public class FruitType_gameEvent : ScriptableObject
         listeners.Remove(eventListener);
     }
 
-    public void Raise(FruitTyoe fruitTyoe)
+    public void Raise(FruitType fruitTyoe)
     {
         for (int i = listeners.Count - 1; i >= 0; --i)
         {
