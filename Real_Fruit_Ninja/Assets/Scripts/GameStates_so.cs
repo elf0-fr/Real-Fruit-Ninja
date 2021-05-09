@@ -6,6 +6,9 @@ using UnityEngine;
 public class GameStates_so : ScriptableObject, ISerializationCallbackReceiver
 {
     [SerializeField]
+    private GameState_gameEvent gameState_changedEvent;
+
+    [SerializeField]
     private GameState initialGameState;
     private GameState runtimeGameState;
     public GameState GameState
@@ -14,7 +17,7 @@ public class GameStates_so : ScriptableObject, ISerializationCallbackReceiver
         set
         {
             runtimeGameState = value;
-            //TODO raise gameStateChangedEvent
+            gameState_changedEvent.Raise(value);
         }
     }
 

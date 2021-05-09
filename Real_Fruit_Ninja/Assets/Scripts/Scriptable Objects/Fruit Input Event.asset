@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a471ba95d4794a6397e80ede318a95e, type: 3}
-  m_Name: GameStates
+  m_Script: {fileID: 11500000, guid: 3af31b2f8db294b1f9cd8ce79baa4801, type: 3}
+  m_Name: Fruit Input Event
   m_EditorClassIdentifier: 
-  gameState_changedEvent: {fileID: 11400000, guid: 52bc7d953f16c497ba3037a541b4964f, type: 2}
-  initialGameState: 0
-  initialScore: 0
-  initialLife: 5

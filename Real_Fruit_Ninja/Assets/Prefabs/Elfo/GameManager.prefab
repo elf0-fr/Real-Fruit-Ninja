@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2932071398302606607}
   - component: {fileID: 2932071398302606606}
   - component: {fileID: -3606387156074144696}
+  - component: {fileID: 8649060550267523625}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,13 +48,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStates_So: {fileID: 11400000, guid: d3d89c59ac988444580b37ac3d2c9220, type: 2}
-  fruitPrefab: {fileID: 8054970212559989969, guid: 63be997240f2741dfafe0df44d331358, type: 3}
+  fruitPrefab: {fileID: 8460192494492440046, guid: 0b0113163eee6d74389c0be82f6890ba, type: 3}
   maxDistance: 5
   maxAngle: 4
   spawnRate: 5
   spawnRateDropSpeed: 0.001
   spawnRateDeceleration: 0.001
   minSpawnRate: 1
+  appleList:
+  - {fileID: 21300000, guid: f1c9d4538acefbb439bde2fb6cc9cd80, type: 3}
+  - {fileID: 21300000, guid: 4e93a3d37fe277c46b9d5d7eda165f06, type: 3}
+  - {fileID: 21300000, guid: 70185f7f7b4bd6e4fbecdd1e2d5235ea, type: 3}
+  bananaList:
+  - {fileID: 21300000, guid: 9493a05c5788de44aaecfdefe636aeed, type: 3}
+  - {fileID: 21300000, guid: 220abdd2ba7b36b4e9be18f6ac0b1560, type: 3}
+  - {fileID: 21300000, guid: f687ba0710615e94abe7d5cb4b67b319, type: 3}
+  carrotList:
+  - {fileID: 21300000, guid: 1f0c00fc03e4acc418309d7637420957, type: 3}
+  - {fileID: 21300000, guid: 77918225d8329dd45bdd072a0f99305f, type: 3}
+  - {fileID: 21300000, guid: cb140fea8f571ca4fad23a2e393d5261, type: 3}
+  pearList:
+  - {fileID: 21300000, guid: 903f26db32b423c49bf1bab7be4d8de6, type: 3}
+  - {fileID: 21300000, guid: f98468e277b3fe94687551f15c081182, type: 3}
+  - {fileID: 21300000, guid: d4c8bae1d95221a4696fdee55fea4004, type: 3}
+  tomatoList:
+  - {fileID: 21300000, guid: 79b1a7e8c30814f40a8ff6bb43600a7d, type: 3}
+  - {fileID: 21300000, guid: 58624a5b134afc945900999e26233bf7, type: 3}
+  - {fileID: 21300000, guid: ad4680da0a5fd0647901c794289a8227, type: 3}
 --- !u!114 &2932071398302606607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,8 +91,8 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2932071398302606608}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 11400000, guid: d3d89c59ac988444580b37ac3d2c9220, type: 2}
+        m_TargetAssemblyTypeName: GameStates_so, Assembly-CSharp
         m_MethodName: IncreaseScore
         m_Mode: 1
         m_Arguments:
@@ -98,8 +119,8 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2932071398302606608}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 11400000, guid: d3d89c59ac988444580b37ac3d2c9220, type: 2}
+        m_TargetAssemblyTypeName: GameStates_so, Assembly-CSharp
         m_MethodName: DecreaseLife
         m_Mode: 1
         m_Arguments:
@@ -129,6 +150,34 @@ MonoBehaviour:
       - m_Target: {fileID: 2932071398302606608}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: Despawn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8649060550267523625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932071398302606605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3abe93d0f194f4b933968ca0728d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: e7dafbf959dea4511a958bfe202fb2db, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2932071398302606608}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: CutFruit
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

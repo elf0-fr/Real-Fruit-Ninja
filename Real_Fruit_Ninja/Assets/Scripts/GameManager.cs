@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public float spawnRateDeceleration = 0.001f;
     [SerializeField]
     private float minSpawnRate = 1f;
+    private float lastSpawnTime;
+    private float accumulatedTime;
 
     [Header("Sprites")]
     [SerializeField]
@@ -44,9 +46,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Sprite[] tomatoList;
     private Sprite[][] fruitSpritesArray = new Sprite[5][];
-
-    private float lastSpawnTime;
-    private float accumulatedTime;
 
     private readonly List<GameObject> waitingFruits = new List<GameObject>();
     private readonly List<GameObject> inGameFruits = new List<GameObject>();
@@ -76,20 +75,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        switch (gameStates_So.GameState)
-        {
-            case GameState.Start:
-                break;
-            case GameState.Pause:
-            case GameState.Credits:
-                break;
-            case GameState.End:
-                Debug.Log("End");
-                break;
-            default:
-                CheckTimeToSpawn();
-                break;
-        }
+        CheckTimeToSpawn();
     }
 
     private void InitializeFruit()
@@ -147,14 +133,17 @@ public class GameManager : MonoBehaviour
 
     public void CutFruit(FruitType fruitType)
     {
-        for(int i=0;i<inGameFruits.Count;i++)
+        if (gameStates_So.GameState != GameState.Play)
+            return;
+
+        for (int i = 0; i < inGameFruits.Count; i++)
         {
-            if(inGameFruits[i].GetComponent<FruitController>().fruitType == fruitType && !inGameFruits[i].GetComponent<FruitController>().IsCut)
+            if (inGameFruits[i].GetComponent<FruitController>().fruitType == fruitType && !inGameFruits[i].GetComponent<FruitController>().IsCut)
             {
                 inGameFruits[i].GetComponent<FruitController>().Cut();
                 return;
             }
         }
-        Debug.Log("-1 vie");
+        gameStates_So.DecreaseScore();
     }
 }

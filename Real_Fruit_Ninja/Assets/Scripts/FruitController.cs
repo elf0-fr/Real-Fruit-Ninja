@@ -15,13 +15,18 @@ public enum FruitType
 
 public class FruitController : MonoBehaviour
 {
+    [Header("Phisics")]
     [SerializeField]
-    private float defaultTime;
+    private float InitialPropultionTime;
     private float time;
     public Vector2 JumpForce;
     [SerializeField]
     private Vector2 fallForce;
+    private float rotation_ratio;
 
+    [Header("FruitState")]
+    [SerializeField]
+    public FruitType fruitType;
     [SerializeField]
     private bool isCut = false;
     public bool IsCut => isCut;
@@ -63,13 +68,9 @@ public class FruitController : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb2D_fruitB;
 
-    public FruitType fruitType;
-
-    private float rotation_ratio;
-
     private void OnEnable()
     {
-        time = defaultTime;
+        time = InitialPropultionTime;
         IsWaiting = true;
         rotation_ratio = Random.Range(-1.0f, 1.0f);
     }
@@ -142,7 +143,7 @@ public class FruitController : MonoBehaviour
     private void CheckFruitVisible()
     {
         if (!sR_fruit.isVisible && !sR_fruitA.isVisible && !sR_fruitB.isVisible && isFruitVisible)
-        {
+        { //Le fruit est sorti de l'écran.
             if (!isCut)
                 fruitMissed_event.Raise();
 

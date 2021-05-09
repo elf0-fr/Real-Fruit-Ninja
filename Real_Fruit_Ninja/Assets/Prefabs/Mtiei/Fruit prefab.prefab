@@ -5566,9 +5566,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf19becfd74dd4edfb77e67abdffddad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultTime: 1
+  InitialPropultionTime: 1
   JumpForce: {x: 0, y: 8}
   fallForce: {x: 0, y: -6}
+  fruitType: 0
   isCut: 0
   isFruitVisible: 0
   IsWaiting: 0
@@ -5584,4 +5585,3 @@ MonoBehaviour:
   rb2D_fruit: {fileID: 8460192492685660339}
   rb2D_fruitA: {fileID: 8460192492784454876}
   rb2D_fruitB: {fileID: 8460192492916875924}
-  fruitType: 0

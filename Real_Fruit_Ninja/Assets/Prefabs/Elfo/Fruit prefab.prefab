@@ -46,10 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf19becfd74dd4edfb77e67abdffddad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultTime: 1
+  InitialPropultionTime: 1
   JumpForce: {x: 0, y: 8}
   fallForce: {x: 0, y: -6}
+  fruitType: 0
   isCut: 0
+  isFruitVisible: 0
   IsWaiting: 1
   fruitCut_event: {fileID: 11400000, guid: 345f6dc0c25fe4a619fff3facd972a06, type: 2}
   fruitMissed_event: {fileID: 11400000, guid: e185d5cc31e414b14b761e7d52399a04, type: 2}
@@ -341,7 +343,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1533577009
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: fec373a49e7b84a9c97aa9b8ac849b76, type: 3}
   m_Color: {r: 0.1649735, g: 1, b: 0, a: 1}

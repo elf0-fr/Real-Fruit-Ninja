@@ -12,17 +12,13 @@ public class UIManager : MonoBehaviour
     private GameObject startAndPauseImage;
     [SerializeField]
     private GameObject creditsImage;
-
-    private void Awake()
-    {
-        this.startAndPauseImage.SetActive(true);
-        this.creditsImage.SetActive(false);
-    }
+    [SerializeField]
+    private GameObject gameOverImage;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        TransitionUI(gameStates_so.GameState);
     }
 
     // Update is called once per frame
@@ -30,7 +26,7 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            TransitionToGame();
+            gameStates_so.GameState = GameState.Play;
         }
 
         if (Input.GetKeyDown(KeyCode.M))
@@ -39,23 +35,99 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void TransitionToGame()
+    public void TransitionUI(GameState state)
     {
-        gameStates_so.GameState = GameState.Play;
-        startAndPauseImage.SetActive(false);
+        switch (gameStates_so.GameState)
+        {
+            case GameState.Start:
+            case GameState.Pause:
+                TransitionToMenu();
+                break;
+            case GameState.Credits:
+                TransitionToCredits();
+                break;
+            case GameState.End:
+                TransitionToGameOver();
+                break;
+            case GameState.Play:
+                TransitionToGame();
+                break;
+            default:
+                Debug.LogError("GameState not recognize");
+                break;
+        }
     }
 
-    public void TransitionToMenu()
+    public void FruitInput(FruitType fruitType)
     {
-        gameStates_so.GameState = GameState.Pause;
+        if (gameStates_so.GameState != GameState.Start && gameStates_so.GameState != GameState.Pause)
+            return;
+
+        switch (fruitType)
+        {
+            case FruitType.APPLE:
+                gameStates_so.GameState = GameState.Play;
+                break;
+            case FruitType.BANANA:
+                gameStates_so.GameState = GameState.Credits;
+                break;
+            case FruitType.PEAR:
+                gameStates_so.GameState = GameState.Start;
+                break;
+            default:
+                Debug.Log("Input not recognize");
+                break;
+        }
+    }
+
+    public void OignonInput()
+    {
+        switch (gameStates_so.GameState)
+        {
+            case GameState.Play:
+                gameStates_so.GameState = GameState.Pause;
+                break;
+            case GameState.Pause:
+                gameStates_so.GameState = GameState.Play;
+                break;
+            case GameState.Credits:
+                gameStates_so.GameState = GameState.Pause;
+                break;
+            default:
+                Debug.LogError("GameState not recognize");
+                break;
+        }
+    }
+
+    private void TransitionToGame()
+    {
+        Time.timeScale = 1f;
+        startAndPauseImage.SetActive(false);
+        creditsImage.SetActive(false);
+        gameOverImage.SetActive(false);
+    }
+
+    private void TransitionToMenu()
+    {
+        Time.timeScale = 0f;
         startAndPauseImage.SetActive(true);
         creditsImage.SetActive(false);
+        gameOverImage.SetActive(false);
     }
 
-    public void TransitionToCredits()
+    private void TransitionToCredits()
     {
-        gameStates_so.GameState = GameState.Credits;
+        Time.timeScale = 0f;
         creditsImage.SetActive(true);
         startAndPauseImage.SetActive(false);
+        gameOverImage.SetActive(false);
+    }
+
+    private void TransitionToGameOver()
+    {
+        Time.timeScale = 0f;
+        creditsImage.SetActive(false);
+        startAndPauseImage.SetActive(false);
+        gameOverImage.SetActive(true);
     }
 }
