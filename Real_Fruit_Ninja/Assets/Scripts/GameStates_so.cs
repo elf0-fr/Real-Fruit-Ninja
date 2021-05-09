@@ -7,6 +7,8 @@ public class GameStates_so : ScriptableObject, ISerializationCallbackReceiver
 {
     [SerializeField]
     private GameState_gameEvent gameState_changedEvent;
+    [SerializeField]
+    private GameEvent scoreOrLife_changedEvent;
 
     [SerializeField]
     private GameState initialGameState;
@@ -30,7 +32,7 @@ public class GameStates_so : ScriptableObject, ISerializationCallbackReceiver
         private set
         {
             runtimeScore = value;
-            //TODO raise scoreChangedEvent
+            scoreOrLife_changedEvent.Raise();
         }
     }
 
@@ -43,7 +45,7 @@ public class GameStates_so : ScriptableObject, ISerializationCallbackReceiver
         private set
         {
             runtimeLife = value;
-            //TODO raise lifeChangedEvent
+            scoreOrLife_changedEvent.Raise();
         }
     }
 
@@ -91,5 +93,11 @@ public class GameStates_so : ScriptableObject, ISerializationCallbackReceiver
             Life -= 1;
         }
         Debug.Log("Life = " + Life);
+    }
+
+    public void ResetScore()
+    {
+        Score = initialScore;
+        Life = initialLife;
     }
 }

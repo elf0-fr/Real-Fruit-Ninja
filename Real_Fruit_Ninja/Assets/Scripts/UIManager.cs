@@ -14,11 +14,14 @@ public class UIManager : MonoBehaviour
     private GameObject creditsImage;
     [SerializeField]
     private GameObject gameOverImage;
+    [SerializeField]
+    private Text scoreAndLifeText;
 
     // Start is called before the first frame update
     void Start()
     {
         TransitionUI(gameStates_so.GameState);
+        UpdateScoreAndLife();
     }
 
     // Update is called once per frame
@@ -93,10 +96,20 @@ public class UIManager : MonoBehaviour
             case GameState.Credits:
                 gameStates_so.GameState = GameState.Pause;
                 break;
+            case GameState.End:
+                gameStates_so.GameState = GameState.Start;
+                gameStates_so.ResetScore();
+                //TODO Raise event of restart
+                break;
             default:
                 Debug.LogError("GameState not recognize");
                 break;
         }
+    }
+
+    public void UpdateScoreAndLife()
+    {
+        scoreAndLifeText.text = "Points: " + gameStates_so.Score + "\nLife: " + gameStates_so.Life;
     }
 
     private void TransitionToGame()
