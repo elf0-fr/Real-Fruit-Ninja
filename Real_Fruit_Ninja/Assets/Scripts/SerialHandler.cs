@@ -6,6 +6,7 @@ public class SerialHandler : MonoBehaviour
 {
 
     private SerialPort _serial;
+
     [Header("Arduino")]
     // Common default serial device on a Linux machine
     [SerializeField]
@@ -42,6 +43,8 @@ public class SerialHandler : MonoBehaviour
         {
             message = message.Trim('\r');
         }
+
+        Debug.Log("message : #" + message + "#");
 
         switch (message)
         {
