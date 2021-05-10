@@ -27,20 +27,6 @@ public class UIManager : MonoBehaviour
         UpdateScoreAndLife();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            gameStates_so.GameState = GameState.Play;
-        }
-
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            TransitionToMenu();
-        }
-    }
-
     public void TransitionUI(GameState state)
     {
         switch (gameStates_so.GameState)
@@ -90,6 +76,8 @@ public class UIManager : MonoBehaviour
     {
         switch (gameStates_so.GameState)
         {
+            case GameState.Start:
+                break;
             case GameState.Play:
                 gameStates_so.GameState = GameState.Pause;
                 break;

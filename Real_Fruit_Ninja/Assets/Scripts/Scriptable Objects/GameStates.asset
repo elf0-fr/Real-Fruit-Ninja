@@ -16,4 +16,4 @@ MonoBehaviour:
   scoreOrLife_changedEvent: {fileID: 11400000, guid: dccc81240f3c04d4f9602c88a011e13c, type: 2}
   initialGameState: 0
   initialScore: 0
-  initialLife: 5
+  initialLife: 6
