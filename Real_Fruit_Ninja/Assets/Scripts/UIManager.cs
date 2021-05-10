@@ -7,7 +7,10 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]
     private GameStates_so gameStates_so;
+    [SerializeField]
+    private GameEvent restartEvent;
 
+    [Header("UI")]
     [SerializeField]
     private GameObject startAndPauseImage;
     [SerializeField]
@@ -99,7 +102,7 @@ public class UIManager : MonoBehaviour
             case GameState.End:
                 gameStates_so.GameState = GameState.Start;
                 gameStates_so.ResetScore();
-                //TODO Raise event of restart
+                restartEvent.Raise();
                 break;
             default:
                 Debug.LogError("GameState not recognize");

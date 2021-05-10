@@ -26,11 +26,16 @@ public class GameManager : MonoBehaviour
     private float maxAngle;
 
     [SerializeField]
-    private float spawnRate = 10f;
-    public float spawnRateDropSpeed = 0.001f;
-    public float spawnRateDeceleration = 0.001f;
+    private float initialSpawnRate;
+    [SerializeField]
+    private float initialSpawnRateDropSpeed = 0.001f;
+    [SerializeField]
+    private float initialSpawnRateDeceleration = 0.001f;
     [SerializeField]
     private float minSpawnRate = 1f;
+    private float spawnRate;
+    private float spawnRateDropSpeed;
+    private float spawnRateDeceleration;
     private float lastSpawnTime;
     private float accumulatedTime;
 
@@ -52,18 +57,17 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        lastSpawnTime = 0f;
-        accumulatedTime = 0f;
-    }
-
-    void Start()
-    {
         fruitSpritesArray[(int)FruitType.BANANA] = (bananaList);
         fruitSpritesArray[(int)FruitType.APPLE] = (appleList);
         fruitSpritesArray[(int)FruitType.CARROT] = (carrotList);
         fruitSpritesArray[(int)FruitType.PEAR] = (pearList);
         fruitSpritesArray[(int)FruitType.TOMATO] = (tomatoList);
 
+        Restart();
+    }
+
+    void Start()
+    {
         for (int i = 0; i < 10; ++i)
         {
             InitializeFruit();
@@ -76,6 +80,16 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CheckTimeToSpawn();
+    }
+
+    public void Restart()
+    {
+        lastSpawnTime = 0f;
+        accumulatedTime = 0f;
+
+        spawnRate = initialSpawnRate;
+        spawnRateDropSpeed = initialSpawnRateDropSpeed;
+        spawnRateDeceleration = initialSpawnRateDeceleration;
     }
 
     private void InitializeFruit()
@@ -113,7 +127,7 @@ public class GameManager : MonoBehaviour
 
         fruit.GetComponent<FruitController>().JumpForce.x = Random.Range(-maxAngle, maxAngle);
 
-        FruitType randomFruitType = (FruitType)Random.Range(0, ((int) FruitType.FRUITS)-1);
+        FruitType randomFruitType = (FruitType)Random.Range(0, ((int) FruitType.FRUITS));
         Sprite[] randomFruitSprites = fruitSpritesArray[(int)randomFruitType];
 
         fruit.GetComponent<FruitController>().sR_fruit.sprite = randomFruitSprites[0];

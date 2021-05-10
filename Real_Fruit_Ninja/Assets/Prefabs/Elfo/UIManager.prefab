@@ -785,6 +785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStates_so: {fileID: 11400000, guid: d3d89c59ac988444580b37ac3d2c9220, type: 2}
+  restartEvent: {fileID: 11400000, guid: c7b91b746e6c5414ca3f14a86699a576, type: 2}
   startAndPauseImage: {fileID: 6272536979476498886}
   creditsImage: {fileID: 6272536978660815951}
   gameOverImage: {fileID: 323278005569336470}
