@@ -77,7 +77,6 @@ public class FruitController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isFruitVisible);
         if (Input.GetKeyDown(KeyCode.C) && isFruitVisible)
         {
             IsWaiting = false;

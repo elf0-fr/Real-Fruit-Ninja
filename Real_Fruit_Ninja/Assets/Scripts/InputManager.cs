@@ -9,12 +9,6 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private FruitType_gameEvent fruitInputEvent;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -34,7 +28,7 @@ public class InputManager : MonoBehaviour
             fruitInputEvent.Raise(FruitType.CARROT);
         }
         //Poire
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             fruitInputEvent.Raise(FruitType.PEAR);
         }

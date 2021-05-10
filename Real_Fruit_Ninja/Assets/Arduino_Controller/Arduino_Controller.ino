@@ -3,78 +3,124 @@
 
 //Parameters
 bool autocal  = 0;
-const int numReadings  = 10;
-long readings [numReadings];
-int readIndex  = 0;
-long total  = 0;
 const int sensitivity  = 1000;
 const int thresh  = 200;
 const int csStep  = 10000;
 CapacitiveSensor cs1  = CapacitiveSensor(2, 3);
 CapacitiveSensor cs2  = CapacitiveSensor(4, 5);
+CapacitiveSensor cs3  = CapacitiveSensor(6, 7);
+CapacitiveSensor cs4  = CapacitiveSensor(8, 9);
+CapacitiveSensor cs5  = CapacitiveSensor(10, 11);
+CapacitiveSensor cs6  = CapacitiveSensor(12, 13);
 
 
 
-// The flag signals to the rest of the program an interrupt occured
-static bool button_flag = false;
-// Remember the state the river in the Unity program is in
-static bool river_state = false;
+static bool button_flag1 = false;
+static bool button_flag2 = false;
+static bool button_flag3 = false;
+static bool button_flag4 = false;
+static bool button_flag5 = false;
+static bool button_flag6 = false;
 
-// Interrupt handler, sets the flag for later processing
-void buttonPress() {
-  button_flag = true;
-}
 
 
 void setup() {
-  //Init Serial USB
   Serial.begin(115200);
-  //Init cs
   if (autocal == 0) {
     {
       cs1.set_CS_AutocaL_Millis(0xFFFFFFFF);
       cs2.set_CS_AutocaL_Millis(0xFFFFFFFF);
+      cs3.set_CS_AutocaL_Millis(0xFFFFFFFF);
+      cs4.set_CS_AutocaL_Millis(0xFFFFFFFF);
+      cs5.set_CS_AutocaL_Millis(0xFFFFFFFF);
+      cs6.set_CS_AutocaL_Millis(0xFFFFFFFF);
     }
   }
 }
 
 void loop() {
-  int value1 = smooth(cs1);
-  int value2 = smooth(cs2);
-  tester(value1, "oignon");
-  tester(value2, "oignon2");
+  long value1 = reader(1);
+  long value2 = reader(2);
+  long value3 = reader(3);
+  long value4 = reader(4);
+  long value5 = reader(5);
+  long value6 = reader(6);
+  
+  if (value1 > 1000 && button_flag1 == false){
+    button_flag1 = true;
+    Serial.println("1");
+  }
+  if (value1 < 1000 && button_flag1 == true) {
+    button_flag1 = false;
+  }
+  
+  if (value2 > 1000 && button_flag2 == false){
+    button_flag2 = true;
+    Serial.println("2");
+  }
+  if (value2 < 1000 && button_flag2 == true) {
+    button_flag2 = false;
+  }
+  
+  if (value3 > 1000 && button_flag3 == false){
+    button_flag3 = true;
+    Serial.println("3");
+  }
+  if (value3 < 1000 && button_flag3 == true) {
+    button_flag3 = false;
+  }
+
+  if (value4 > 1000 && button_flag4 == false){
+    button_flag4 = true;
+    Serial.println("4");
+  }
+  if (value4 < 1000 && button_flag4 == true) {
+    button_flag4 = false;
+  }
+
+  if (value5 > 1000 && button_flag5 == false){
+    button_flag5 = true;
+    Serial.println("5");
+  }
+  if (value5 < 1000 && button_flag5 == true) {
+    button_flag5 = false;
+  }
+
+  if (value6 > 1000 && button_flag6 == false){
+    button_flag6 = true;
+    Serial.println("6");
+  }
+  if (value6 < 1000 && button_flag6 == true) {
+    button_flag6 = false;
+  }
 }
 
-void tester(int val, const char * mes){
-  
-  if (val > 1000 && button_flag == false){
-    button_flag = true;
-    Serial.println(mes);
-  }
-  if (val < 1000 && button_flag == true) {
-    button_flag = false;
-  }
-  
-  
+
+
+long reader(int index) { 
+  ////read sensor value
+  long reading;
+  // read the right one
+  switch (index) {
+  case 1:
+    reading = cs1.capacitiveSensor(sensitivity);
+    break;
+  case 2:
+    reading = cs2.capacitiveSensor(sensitivity);
+    break;
+  case 3:
+    reading = cs3.capacitiveSensor(sensitivity);
+    break;
+  case 4:
+    reading = cs4.capacitiveSensor(sensitivity);
+    break;
+  case 5:
+    reading = cs5.capacitiveSensor(sensitivity);
+    break;
+  case 6:
+    reading = cs6.capacitiveSensor(sensitivity);
+    break;
 }
-
-
-long smooth(CapacitiveSensor cs) { /* function smooth */
-  ////Perform average on sensor readings
-  long average;
-  // subtract the last reading:
-  total = total - readings[readIndex];
-  // read the sensor:
-  readings[readIndex] = cs.capacitiveSensor(sensitivity);
-  // add value to total:
-  total = total + readings[readIndex];
-  // handle index
-  readIndex = readIndex + 1;
-  if (readIndex >= numReadings) {
-    readIndex = 0;
-  }
-  // calculate the average:
-  average = total / numReadings;
-
-  return average;
+  
+  return reading;
 }

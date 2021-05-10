@@ -6,14 +6,18 @@ public class SerialHandler : MonoBehaviour
 {
 
     private SerialPort _serial;
-
+    [Header("Arduino")]
     // Common default serial device on a Linux machine
-    [SerializeField] private string serialPort = "/dev/ttyACM0";
-    [SerializeField] private int baudrate = 115200;
+    [SerializeField]
+    private string serialPort = "/dev/ttyACM0";
+    [SerializeField]
+    private int baudrate = 115200;
 
-    [SerializeField] private Component river;
-    private Rigidbody2D _riverRigidbody2D;
-    private SpriteRenderer _riverSprite;
+    [Header("Event")]
+    [SerializeField]
+    private GameEvent oignonInputEvent;
+    [SerializeField]
+    private FruitType_gameEvent fruitInputEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +25,6 @@ public class SerialHandler : MonoBehaviour
         _serial = new SerialPort(serialPort, baudrate);
         // Once configured, the serial communication must be opened just like a file : the OS handles the communication.
         _serial.Open();
-
-        _riverRigidbody2D = river.GetComponentInParent<Rigidbody2D>();
-        _riverSprite = river.GetComponentInParent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -44,20 +45,28 @@ public class SerialHandler : MonoBehaviour
 
         switch (message)
         {
-            case "dry":
-                _riverRigidbody2D.simulated = false;
-                _riverSprite.color = new Color32(146, 108, 77, 255);
+            case "1": //Pomme
+                fruitInputEvent.Raise(FruitType.APPLE);
                 break;
-            case "wet":
-                _riverRigidbody2D.simulated = true;
-                _riverSprite.color = new Color32(16, 107, 255, 255);
+            case "2": //Banane
+                fruitInputEvent.Raise(FruitType.BANANA);
+                break;
+            case "3": //Carotte
+                fruitInputEvent.Raise(FruitType.CARROT);
+                break;
+            case "4": //Poire
+                fruitInputEvent.Raise(FruitType.PEAR);
+                break;
+            case "5": //Tomate
+                fruitInputEvent.Raise(FruitType.TOMATO);
+                break;
+            case "6": //Oignon
+                oignonInputEvent.Raise();
+                break;
+            default:
+                Debug.LogError("Input not recognize");
                 break;
         }
-    }
-
-    public void SetLed(bool newState)
-    {
-        _serial.WriteLine(newState ? "LED ON" : "LED OFF");
     }
 
     private void OnDestroy()

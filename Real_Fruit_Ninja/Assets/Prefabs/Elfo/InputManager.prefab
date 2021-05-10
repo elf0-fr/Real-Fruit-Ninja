@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1236084028109099952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1236084028109099954}
+  - component: {fileID: 1236084028109099955}
+  - component: {fileID: 3979987437024548683}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1236084028109099954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236084028109099952}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1236084028109099955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236084028109099952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d503fd78ca4f426dae0ee083b34c509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oignonInputEvent: {fileID: 11400000, guid: f9b22fea17e5d483b874469a513d19e2, type: 2}
+  fruitInputEvent: {fileID: 11400000, guid: e7dafbf959dea4511a958bfe202fb2db, type: 2}
+--- !u!114 &3979987437024548683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236084028109099952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4faba3cc757ae45d99702caf68b1eedf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serialPort: /dev/ttyACM0
+  baudrate: 115200
+  oignonInputEvent: {fileID: 11400000, guid: f9b22fea17e5d483b874469a513d19e2, type: 2}
+  fruitInputEvent: {fileID: 11400000, guid: e7dafbf959dea4511a958bfe202fb2db, type: 2}
