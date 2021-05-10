@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2932071398302606606}
   - component: {fileID: -3606387156074144696}
   - component: {fileID: 8649060550267523625}
+  - component: {fileID: 3853796061565784290}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -51,9 +52,9 @@ MonoBehaviour:
   fruitPrefab: {fileID: 8460192494492440046, guid: 0b0113163eee6d74389c0be82f6890ba, type: 3}
   maxDistance: 5
   maxAngle: 4
-  spawnRate: 5
-  spawnRateDropSpeed: 0.001
-  spawnRateDeceleration: 0.001
+  initialSpawnRate: 5
+  initialSpawnRateDropSpeed: 0.001
+  initialSpawnRateDeceleration: 0.001
   minSpawnRate: 1
   appleList:
   - {fileID: 21300000, guid: f1c9d4538acefbb439bde2fb6cc9cd80, type: 3}
@@ -179,6 +180,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: CutFruit
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3853796061565784290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932071398302606605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86dcb2db2cbe04dbaa362130081ac2dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: c7b91b746e6c5414ca3f14a86699a576, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2932071398302606608}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
